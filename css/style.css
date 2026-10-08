@@ -1,0 +1,298 @@
+/* Fælles værdier fra HiFi Prototype. */
+:root {
+  --color-background: #F7F3EB;
+  --color-surface: #FFFCF6;
+  --color-text: #292822;
+  --color-text-secondary: #5F5B51;
+  --color-accent: #85452F;
+  --color-border: #CEC5B6;
+  --color-information-background: #E6EBDD;
+  --color-information-text: #34452F;
+  --font-heading: "Lora", Georgia, serif;
+  --font-body: "Inter", Arial, sans-serif;
+  --font-size-body: 16px;
+  --line-height-body: 1.55;
+  --content-width: 1200px;
+  --space-small: 12px;
+  --space-medium: 24px;
+  --space-large: 64px;
+  --page-padding: 20px;
+  --radius-control: 4px;
+}
+
+/* Grundstyles og typografi. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+h1 { font-size: 60px; line-height: 1.08; letter-spacing: -2px; }
+h2 { font-size: 32px; line-height: 1.2; letter-spacing: -0.6px; }
+h3 { font-size: 28px; line-height: 1.2; }
+.heading-large { font-size: 36px; letter-spacing: 0; }
+p { color: var(--color-text-secondary); }
+.lead { max-width: 680px; font-size: 18px; }
+.small-text { font-size: 12px; }
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 1.3px;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--color-accent); text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 4px; }
+
+/* Fleksible layouts: samme container bruges på alle sider. */
+.container {
+  width: calc(100% - 2 * var(--page-padding));
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+.columns-two, .columns-three, .guide-columns { display: grid; gap: var(--space-medium); }
+.columns-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.columns-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.guide-columns { grid-template-columns: minmax(0, 690fr) minmax(0, 486fr); }
+.content-section { margin-top: var(--space-large); padding-top: 36px; border-top: 1px solid var(--color-border); }
+.content-section > * + * { margin-top: 28px; }
+.page-introduction { display: grid; gap: 20px; padding-top: var(--space-large); }
+.page-introduction h1 { max-width: 950px; }
+
+/* Header og footer. Brandlinket fører tilbage til forsiden. */
+.site-header { border-bottom: 1px solid var(--color-border); }
+.header-content, .navigation-links, .footer-content, .guide-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-medium);
+}
+.header-content { min-height: 105px; justify-content: space-between; padding-block: 24px; }
+.site-brand { color: #000; font-family: var(--font-heading); font-size: 24px; line-height: 1.05; letter-spacing: -0.6px; text-decoration: none; }
+.navigation-links { gap: 40px; }
+.navigation-links > a:not(.button) { display: inline-flex; align-items: center; min-height: 44px; color: #000; font-size: 15px; text-decoration: none; }
+.navigation-links > a[aria-current="page"]:not(.button), .navigation-links > a:not(.button):hover { text-decoration: underline; }
+.site-footer { margin-top: 52px; padding-block: 40px; border-top: 1px solid var(--color-border); }
+.footer-content { justify-content: space-between; }
+.footer-description { display: grid; gap: 8px; font-size: 12px; }
+.footer-brand { color: var(--color-text); font-family: var(--font-heading); font-size: 24px; line-height: 1.2; }
+
+/* CTA'er er links, når de fører til en anden side. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px;
+  padding: 12px;
+  border-radius: var(--radius-control);
+  background: var(--color-accent);
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+}
+.button:hover { text-decoration: underline; }
+.text-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 600; line-height: 1.4; }
+.guide-navigation { margin-top: 24px; }
+
+/* Kort, informationsbokse og trinvisninger til de kommende sider. */
+.guide-card { padding-block: 24px; border-top: 1px solid var(--color-border); }
+.guide-card > * + * { margin-top: 12px; }
+.card-number { color: var(--color-accent); font-family: var(--font-heading); font-size: 36px; line-height: 1.2; }
+.information-box { padding: 24px; border-left: 3px solid var(--color-information-text); background: var(--color-information-background); }
+.information-box p, .information-box h2, .information-box h3 { color: var(--color-information-text); }
+.information-box h2, .information-box h3 { margin-bottom: 8px; font-family: var(--font-body); font-size: 16px; font-weight: 600; line-height: 1.4; }
+.step-list { margin: 0; padding: 0; list-style: none; counter-reset: guide-step; }
+.step-item { display: flex; gap: 16px; padding-block: 20px; border-bottom: 1px solid var(--color-border); counter-increment: guide-step; }
+.step-item::before { content: counter(guide-step); flex: 0 0 32px; color: var(--color-accent); font-family: var(--font-heading); font-size: 26px; }
+.step-item h3 { margin-bottom: 6px; font-family: var(--font-body); font-size: 17px; font-weight: 600; line-height: 1.4; }
+.material-card { display: grid; grid-template-columns: 144px minmax(0, 1fr); gap: 32px; padding-block: 24px; border-top: 1px solid var(--color-border); }
+.material-card > div { display: grid; align-content: start; gap: 10px; }
+.material-check { display: flex; align-items: center; gap: 8px; min-height: 44px; font-size: 13px; color: var(--color-information-text); }
+.material-check input { width: 44px; height: 44px; margin: 0; accent-color: var(--color-accent); }
+.image-placeholder { display: grid; place-items: center; aspect-ratio: 3 / 2; padding: 24px; border: 1px solid var(--color-border); background: var(--color-surface); text-align: center; }
+.image-placeholder-square { aspect-ratio: 1; }
+.observation-card > * + * { margin-top: 16px; }
+
+/* Fire statiske markører viser kun sidens aktuelle trin. */
+.guide-progress { padding-top: var(--space-large); }
+.progress-status { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.progress-label { color: var(--color-accent); font-size: 13px; font-weight: 600; }
+.progress-markers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.progress-marker { height: 6px; background: var(--color-border); }
+.progress-marker.is-current { border: 1px solid var(--color-accent); background: var(--color-information-background); }
+
+/* Spring navigationen over med tastaturet. */
+.skip-link { position: absolute; top: 12px; left: var(--page-padding); z-index: 1; padding: 12px; background: var(--color-background); transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+
+/* Forside: billedbeskæringen følger de konkrete billedlag i Figma. */
+.home-content { padding-top: var(--space-large); }
+.home-hero { align-items: center; }
+.hero-introduction { display: grid; justify-items: start; gap: 24px; }
+.hero-text { display: grid; gap: 20px; }
+.hero-figure { min-width: 0; margin: 0; }
+.hero-figure figcaption { margin-top: 12px; color: var(--color-text-secondary); }
+.hero-image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--color-border); }
+.hero-image img {
+  position: absolute;
+  width: 251.7%;
+  max-width: none;
+  height: 188.78%;
+  left: -7.66%;
+  top: -20.17%;
+}
+.home-facts { margin-top: 64px; padding-top: 64px; padding-bottom: 72px; }
+.home-facts .content-section { margin-top: 0; }
+.facts-description { display: grid; gap: 8px; justify-items: start; }
+.home-process { margin-top: 64px; }
+.home-process > .columns-three { margin-top: 24px; }
+.home-process h3 { letter-spacing: -0.6px; }
+.baking-columns { align-items: center; }
+.baking-image { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border: 1px solid var(--color-border); }
+.baking-description { display: grid; gap: 16px; justify-items: start; }
+.home-page .site-footer { margin-top: 117px; }
+
+/* Guideoversigt: 792 px indhold og 384 px materialeboks på desktop. */
+.guide-start-content { padding-top: 53px; }
+.start-columns { display: grid; grid-template-columns: minmax(0, 792fr) minmax(0, 384fr); gap: 24px; align-items: start; }
+.start-introduction { display: grid; gap: 24px; justify-items: start; }
+.start-introduction > h1 { font-size: 32px; line-height: 1.2; letter-spacing: -0.6px; }
+.materials-summary { display: grid; gap: 16px; padding: 28px; border: 1px solid var(--color-border); background: var(--color-surface); }
+.materials-summary h2 { font-size: 28px; letter-spacing: -0.6px; }
+.materials-summary-list { margin: 0; padding: 0; list-style: none; color: var(--color-text-secondary); }
+.start-overview { margin-top: 72px; }
+.start-overview .step-item::before { content: counter(guide-step, decimal-leading-zero); }
+.start-overview .step-item + .step-item { margin-top: 28px; }
+.guide-start-page .site-footer { margin-top: 72px; }
+
+/* Guidetrin: fælles opbygning til aktivitet, observation og næste skridt. */
+.guide-activity { margin-top: var(--space-large); align-items: start; }
+.activity-instructions, .activity-observation { display: grid; gap: 24px; min-width: 0; }
+.ingredients-box { display: grid; gap: 12px; padding: 24px; border: 1px solid var(--color-border); background: var(--color-surface); }
+.ingredients-box > .eyebrow { font-family: var(--font-body); font-size: 12px; font-weight: 600; line-height: 1.4; letter-spacing: 1.3px; }
+.ingredients-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; color: var(--color-text); font-family: var(--font-heading); font-size: 27px; line-height: 1.2; }
+.step-item .task-title { margin-bottom: 6px; font-family: var(--font-body); font-size: 17px; font-weight: 600; line-height: 1.4; letter-spacing: 0; }
+.step-item > div { min-width: 0; }
+.mixing-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--color-border); }
+.mixing-image img { position: absolute; width: 222.91%; max-width: none; height: 188.08%; left: -3.53%; top: -6.35%; }
+.guide-next { display: grid; gap: 16px; margin-top: var(--space-large); }
+.guide-next .guide-navigation { margin-top: 0; }
+.guide-help { display: grid; justify-items: start; gap: 8px; margin-top: var(--space-large); padding: 24px; border: 1px solid var(--color-border); background: var(--color-surface); }
+.guide-help h2 { font-size: 28px; }
+.guide-step-page main { padding-bottom: 72px; }
+.guide-step-page .site-footer { margin-top: 0; }
+
+/* Ventetid: bekræftelsen og markørerne er statiske og gemmer ingen data. */
+.progress-marker.is-complete { background: var(--color-accent); }
+.guide-confirmation { display: flex; align-items: center; gap: 12px; margin-top: var(--space-large); }
+.guide-confirmation p { color: var(--color-information-text); font-size: 14px; font-weight: 600; line-height: 1.4; }
+.confirmation-symbol { display: grid; place-items: center; flex: 0 0 44px; height: 44px; border-radius: 50%; background: var(--color-information-background); color: var(--color-information-text); font-size: 23px; }
+.rest-box { display: grid; gap: 16px; padding: 28px; border: 1px solid var(--color-border); background: var(--color-surface); }
+.rest-box h3 { font-size: 48px; line-height: 1.1; }
+.heading-card { font-size: 28px; }
+.rest-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--color-border); }
+.rest-image img { position: absolute; width: 178%; max-width: none; height: 150.19%; left: -0.02%; top: -29.11%; }
+.guide-notice, .waiting-navigation { margin-top: var(--space-large); }
+
+/* Første fodring: samme motiv og beskæring som i HiFi Prototype. */
+.feeding-image { position: relative; aspect-ratio: 486 / 335; overflow: hidden; border: 1px solid var(--color-border); }
+.feeding-image img { position: absolute; width: 107.14%; max-width: none; height: 155.43%; left: -3.53%; top: -33.03%; }
+
+/* Daglig rutine og fagligt grundlag. */
+.feeding-ratio { font-size: 40px; line-height: 1.2; letter-spacing: 0; }
+.routine-steps .step-item + .step-item { margin-top: 24px; }
+.routine-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--color-border); }
+.routine-image img { position: absolute; width: 110.37%; max-width: none; height: 165.56%; left: -5.17%; top: -47.86%; }
+.source-note { display: grid; gap: 8px; margin-top: var(--space-large); padding-top: 24px; border-top: 1px solid var(--color-border); font-size: 12px; }
+.source-label { font-weight: 600; line-height: 1.4; letter-spacing: 1.3px; }
+
+/* Materialelisten bruger almindelige HTML-afkrydsningsfelter uden JavaScript. */
+.material-card > img { width: 144px; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--color-border); }
+.material-check { cursor: pointer; }
+.material-check input { flex-shrink: 0; appearance: none; border: 1px solid var(--color-border); border-radius: var(--radius-control); background: var(--color-surface); cursor: pointer; }
+.material-check input:checked { appearance: auto; }
+.optional-label { font-size: 12px; font-weight: 600; line-height: 1.4; }
+.materials-page main { padding-bottom: 72px; }
+.materials-page .site-footer { margin-top: 0; padding-block: 23px; }
+
+/* Vidensside og FAQ. Browseren styrer åbning og lukning af details. */
+.knowledge-back { margin-top: var(--space-large); }
+.culture-description { display: grid; gap: 16px; align-content: start; }
+.observation-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--color-border); }
+.observation-image img { position: absolute; max-width: none; }
+.observation-quiet img { width: 223.37%; height: 188.47%; left: -3.32%; top: -3.98%; }
+.observation-bubbles img { width: 194.45%; height: 164.07%; left: -94.58%; top: -32.2%; }
+.observation-growth img { width: 109.72%; height: 164.57%; left: -4.79%; top: -47.75%; }
+.faq-list details { border-top: 1px solid var(--color-border); }
+.faq-list details:last-child { border-bottom: 1px solid var(--color-border); }
+.faq-list summary { min-height: 44px; padding: 20px 0; font-size: 17px; font-weight: 600; cursor: pointer; }
+.faq-list details[open] summary { color: var(--color-accent); }
+.faq-list details p { padding-bottom: 20px; }
+.knowledge-page main { padding-bottom: 72px; }
+.knowledge-page .site-footer { margin-top: 0; padding-block: 23px; }
+
+/* Breakpoints vælges efter, hvornår kolonner og navigation får for lidt plads. */
+@media (max-width: 1000px) {
+  .guide-columns { grid-template-columns: 1fr; }
+  .navigation-links { gap: 12px 24px; }
+  .header-content { gap: 24px; }
+}
+@media (max-width: 700px) {
+  :root { --space-large: 40px; }
+  h1 { font-size: 36px; letter-spacing: -1px; }
+  h2, .heading-large { font-size: 28px; }
+  h3 { font-size: 24px; }
+  .columns-two, .columns-three { grid-template-columns: 1fr; }
+  .header-content, .footer-content { flex-direction: column; align-items: flex-start; }
+  .navigation-links { gap: 8px 20px; }
+  .navigation-links .button { max-width: 100%; }
+  .material-card { grid-template-columns: 1fr; gap: 20px; }
+  .material-card > img { max-width: 144px; }
+  .guide-navigation { flex-direction: column; align-items: flex-start; }
+  .site-footer { padding-block: 24px; }
+}
+
+@media (max-width: 1000px) {
+  .home-hero { grid-template-columns: 1fr; }
+  .hero-figure { width: 100%; max-width: 588px; }
+}
+@media (max-width: 700px) {
+  .home-facts { margin-top: 40px; padding-top: 0; padding-bottom: 0; }
+  .home-process { margin-top: 40px; }
+  .home-page .site-footer { margin-top: 48px; }
+  .baking-description .heading-large { font-size: 28px; }
+}
+
+@media (max-width: 1000px) {
+  .start-columns { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .guide-start-content { padding-top: 40px; }
+  .start-introduction > h1 { font-size: 28px; }
+  .materials-summary { padding: 24px; }
+  .start-overview { margin-top: 40px; }
+  .guide-start-page .site-footer { margin-top: 40px; }
+}
+
+@media (max-width: 700px) {
+  .rest-box { padding: 24px; }
+  .rest-box h3 { font-size: 32px; }
+}
+
+@media (max-width: 700px) {
+  .feeding-ratio { font-size: 32px; }
+}
