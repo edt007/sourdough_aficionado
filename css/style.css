@@ -5,6 +5,7 @@
   --color-text: #292822;
   --color-text-secondary: #5F5B51;
   --color-accent: #85452F;
+  --color-button-hover: #5F3223;
   --color-border: #CEC5B6;
   --color-information-background: #E6EBDD;
   --color-information-text: #34452F;
@@ -104,7 +105,13 @@ a:hover { text-decoration-thickness: 2px; }
   text-align: center;
   text-decoration: none;
 }
-.button:hover { text-decoration: underline; }
+.button:hover { background: var(--color-button-hover); }
+/* Click-varianten vises kun, mens knappen holdes nede. */
+.button:active {
+  background: var(--color-background);
+  color: var(--color-accent);
+  box-shadow: inset 0 0 0 0.5px var(--color-accent);
+}
 .text-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 600; line-height: 1.4; }
 .guide-navigation { margin-top: 24px; }
 
