@@ -134,6 +134,27 @@ a:hover { text-decoration-thickness: 2px; }
 .image-placeholder-square { aspect-ratio: 1; }
 .observation-card > * + * { margin-top: 16px; }
 
+/* Billeder fylder rammen, bevarer proportionerne og centreres.
+   Kanterne beskæres, hvis billedets format er anderledes end rammens. */
+.hero-image img,
+.mixing-image img,
+.rest-image img,
+.feeding-image img,
+.routine-image img,
+.observation-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.baking-image,
+.material-card > img {
+  object-fit: cover;
+  object-position: center;
+}
+
 /* Fire statiske markører viser kun sidens aktuelle trin. */
 .guide-progress { padding-top: var(--space-large); }
 .progress-status { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
@@ -146,7 +167,7 @@ a:hover { text-decoration-thickness: 2px; }
 .skip-link { position: absolute; top: 12px; left: var(--page-padding); z-index: 1; padding: 12px; background: var(--color-background); transform: translateY(-200%); }
 .skip-link:focus { transform: translateY(0); }
 
-/* Forside: billedbeskæringen følger de konkrete billedlag i Figma. */
+/* Forside: billedrammerne bevarer deres format på alle skærmstørrelser. */
 .home-content { padding-top: var(--space-large); }
 .home-hero { align-items: center; }
 .hero-introduction { display: grid; justify-items: start; gap: 24px; }
@@ -154,14 +175,6 @@ a:hover { text-decoration-thickness: 2px; }
 .hero-figure { min-width: 0; margin: 0; }
 .hero-figure figcaption { margin-top: 12px; color: var(--color-text-secondary); }
 .hero-image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--color-border); }
-.hero-image img {
-  position: absolute;
-  width: 251.7%;
-  max-width: none;
-  height: 188.78%;
-  left: -7.66%;
-  top: -20.17%;
-}
 .home-facts { margin-top: 64px; padding-top: 64px; padding-bottom: 72px; }
 .home-facts .content-section { margin-top: 0; }
 .facts-description { display: grid; gap: 8px; justify-items: start; }
@@ -195,7 +208,6 @@ a:hover { text-decoration-thickness: 2px; }
 .step-item .task-title { margin-bottom: 6px; font-family: var(--font-body); font-size: 17px; font-weight: 600; line-height: 1.4; letter-spacing: 0; }
 .step-item > div { min-width: 0; }
 .mixing-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--color-border); }
-.mixing-image img { position: absolute; width: 222.91%; max-width: none; height: 188.08%; left: -3.53%; top: -6.35%; }
 .guide-next { display: grid; gap: 16px; margin-top: var(--space-large); }
 .guide-next .guide-navigation { margin-top: 0; }
 .guide-help { display: grid; justify-items: start; gap: 8px; margin-top: var(--space-large); padding: 24px; border: 1px solid var(--color-border); background: var(--color-surface); }
@@ -212,18 +224,15 @@ a:hover { text-decoration-thickness: 2px; }
 .rest-box h3 { font-size: 48px; line-height: 1.1; }
 .heading-card { font-size: 28px; }
 .rest-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--color-border); }
-.rest-image img { position: absolute; width: 178%; max-width: none; height: 150.19%; left: -0.02%; top: -29.11%; }
 .guide-notice, .waiting-navigation { margin-top: var(--space-large); }
 
 /* Første fodring: samme motiv og beskæring som i HiFi Prototype. */
 .feeding-image { position: relative; aspect-ratio: 486 / 335; overflow: hidden; border: 1px solid var(--color-border); }
-.feeding-image img { position: absolute; width: 107.14%; max-width: none; height: 155.43%; left: -3.53%; top: -33.03%; }
 
 /* Daglig rutine og fagligt grundlag. */
 .feeding-ratio { font-size: 40px; line-height: 1.2; letter-spacing: 0; }
 .routine-steps .step-item + .step-item { margin-top: 24px; }
 .routine-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--color-border); }
-.routine-image img { position: absolute; width: 110.37%; max-width: none; height: 165.56%; left: -5.17%; top: -47.86%; }
 .source-note { display: grid; gap: 8px; margin-top: var(--space-large); padding-top: 24px; border-top: 1px solid var(--color-border); font-size: 12px; }
 .source-label { font-weight: 600; line-height: 1.4; letter-spacing: 1.3px; }
 
@@ -240,10 +249,6 @@ a:hover { text-decoration-thickness: 2px; }
 .knowledge-back { margin-top: var(--space-large); }
 .culture-description { display: grid; gap: 16px; align-content: start; }
 .observation-image { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--color-border); }
-.observation-image img { position: absolute; max-width: none; }
-.observation-quiet img { width: 223.37%; height: 188.47%; left: -3.32%; top: -3.98%; }
-.observation-bubbles img { width: 194.45%; height: 164.07%; left: -94.58%; top: -32.2%; }
-.observation-growth img { width: 109.72%; height: 164.57%; left: -4.79%; top: -47.75%; }
 .faq-list details { border-top: 1px solid var(--color-border); }
 .faq-list details:last-child { border-bottom: 1px solid var(--color-border); }
 .faq-list summary { min-height: 44px; padding: 20px 0; font-size: 17px; font-weight: 600; cursor: pointer; }
